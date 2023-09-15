@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Cart from "./Cart";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 
 const Home = () => {
@@ -8,6 +11,7 @@ const Home = () => {
     const [selectCourse, setSelectCourse] = useState([]);
     const [totalCredit, setTotalCredit] = useState(0);
     const [remainingCreditHour, setRemainingCredit] = useState(20);
+    const [totalPrice,setTotalPrice] =useState(0);
 
     useEffect(() => {
         fetch("../../public/data.json")
@@ -20,33 +24,40 @@ const Home = () => {
         const isAlreadyAdded = selectCourse.find((item) => item.id == courseData.id);
 
         let credit = courseData.course_credit_hour;
+        let price = courseData.course_price;
        
         let remainingCreditHour=20;
 
         if (isAlreadyAdded) {
-            return alert("already added")
-        }
+            toast.error('Course is already added.');
+            return;
+          }
 
         else {
             selectCourse.forEach((item) => {
                 
                 credit = credit + item.course_credit_hour;
+                price =price + item.course_price;
                 
             });
             remainingCreditHour =  20-credit ;
 
-           
-
-            
 
 
+            if (credit > 20 && remainingCreditHour < 0) {
+                
+                toast.error('Total credit limit is over.');
+                toast.error('Remaining credit limit is over.');
 
-            if (credit > 20) {
-                return alert("credit limit up")
+                return;
+                    
+                    
+               
 
             } else {
                 setTotalCredit(credit);
                 setRemainingCredit(remainingCreditHour);
+                setTotalPrice(price);
 
                 setSelectCourse([...selectCourse, courseData]);
             }
@@ -75,7 +86,7 @@ const Home = () => {
                             <h4 className="ml-4 text-[18px] font-semibold mb-4   ">{courseData.course_title}</h4>
                             <p className="text-[14px] mx-4 font-normal text-gray-400       ">{courseData.course_description}</p>
                             <div className="flex  justify-between mx-4 mt-4 mb-4">
-                                <div>Price:{courseData.course_price}</div>
+                                <div>$ Price:{courseData.course_price}</div>
                                 <div>Credit Hour:{courseData.course_credit_hour}hr</div>
                             </div>
 
@@ -95,15 +106,18 @@ const Home = () => {
                         remainingCreditHour={remainingCreditHour}
                         totalCredit={totalCredit}
                         selectCourse={selectCourse}
+                        totalPrice={totalPrice}
 
                     >
 
                     </Cart>
                 </div>
             </div>
+            <ToastContainer />
 
 
         </div>
+        
     );
 };
 

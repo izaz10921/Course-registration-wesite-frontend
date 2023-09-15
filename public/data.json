@@ -3,7 +3,7 @@
       "course_img": "https://i.ibb.co/Sx37HsM/course-1.jpg",
       "course_title": "Introduction to Programming",
       "course_description": "Learn the fundamentals of programming with this introductory course.",
-      "course_price": "$99.99",
+      "course_price": 99,
       "course_credit_hour": 3,
       "id": 1
     },
@@ -11,7 +11,7 @@
       "course_img": "https://i.ibb.co/yRm6rws/course-2.jpg",
       "course_title": "Web Development Fundamentals",
       "course_description": "Master the basics of web development, including HTML, CSS, and JavaScript.",
-      "course_price": "$129.99",
+      "course_price": 119,
       "course_credit_hour": 4,
       "id": 2
     },
@@ -19,7 +19,7 @@
       "course_img": "https://i.ibb.co/6nWfZcg/course-3.jpg",
       "course_title": "Data Science for Beginners",
       "course_description": "Get started with data science and learn how to analyze data effectively.",
-      "course_price": "$149.99",
+      "course_price": 150,
       "course_credit_hour": 3,
       "id": 3
     },
@@ -27,7 +27,7 @@
       "course_img": "https://i.ibb.co/Hh1XDJJ/course-4.jpg",
       "course_title": "Graphic Design Essentials",
       "course_description": "Explore the world of graphic design and create stunning visual content.",
-      "course_price": "$109.99",
+      "course_price": 250,
       "course_credit_hour": 2,
       "id": 4
     },
@@ -35,7 +35,7 @@
       "course_img": "https://i.ibb.co/pnWmKKY/course-5.jpg",
       "course_title": "Financial Management",
       "course_description": "Learn the principles of financial management and budgeting.",
-      "course_price": "$179.99",
+      "course_price": 350,
       "course_credit_hour": 3,
       "id": 5
     },
@@ -43,7 +43,7 @@
       "course_img": "https://i.ibb.co/VYPbWVH/course-6.jpg",
       "course_title": "Advanced JavaScript ",
       "course_description": "Take your JavaScript skills to the next level with advanced concepts and techniques.",
-      "course_price": "$149.99",
+      "course_price": 270,
       "course_credit_hour": 4,
       "id": 6
     },
@@ -51,7 +51,7 @@
       "course_img": "https://i.ibb.co/mNwq73d/course-7.jpg",
       "course_title": "Machine Learning Foundations",
       "course_description": "Dive into the world of machine learning and artificial intelligence.",
-      "course_price": "$199.99",
+      "course_price": 330,
       "course_credit_hour": 4,
       "id": 7
 
@@ -60,7 +60,7 @@
       "course_img": "https://i.ibb.co/tQFbW5w/course-8.jpg",
       "course_title": "Digital Marketing Strategy",
       "course_description": "Learn how to create effective digital marketing strategies and campaigns.",
-      "course_price": "$129.99",
+      "course_price": 450,
       "course_credit_hour": 3,
       "id": 8
     },
@@ -68,7 +68,7 @@
       "course_img": "https://i.ibb.co/9NJwMhw/course-9.jpg",
       "course_title": "Business Ethics and Leadership",
       "course_description": "Explore the ethical aspects of business leadership and decision-making.",
-      "course_price": "$89.99",
+      "course_price": 190,
       "course_credit_hour": 2,
       "id": 9
     }
