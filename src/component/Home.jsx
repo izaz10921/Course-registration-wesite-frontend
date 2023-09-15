@@ -1,15 +1,25 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import Cart from "./Cart";
 
 
 const Home = () => {
     const [courseCardData,setCourseCardData]=useState([]);
+    const [selectCourse,setSelectCourse]=useState([]);
 
     useEffect(()=> {
         fetch("../../public/data.json")
         .then((res)=> res.json())
         .then((data)=> setCourseCardData(data) );
     },[]);
+
+    const handleSelectCourse = (courseData) => {
+
+        setSelectCourse([...selectCourse,courseData]);
+
+
+
+    };
 
     return (
 
@@ -30,7 +40,7 @@ const Home = () => {
                                 <div>Credit Hour:{courseData.course_credit_hour}</div>
                             </div>
 
-                            <button className="bg-blue-500 text-white text-[18px] font-normal px-[112px] m-4 mx-4 py-[9px] rounded-md  ">Select</button>
+                            <button onClick={() => handleSelectCourse(courseData)} className="bg-blue-500 text-white text-[18px] font-normal px-[112px] m-4 mx-4 py-[9px] rounded-md  ">Select</button>
         
 
 
@@ -41,21 +51,12 @@ const Home = () => {
 
                 </div>
                 <div className="w-1/4  px-5">
-                    <div className="p-4 border-b-2 bg-white ">
-                        <h1 className="text-[18px] text-blue-500 font-medium ">Credit Hour Remaining </h1>
-                    </div>
-                    <div className="p-4 border-b-2  bg-white ">
-                        <h1 className="text-[18px] text-black
-                         font-bold ">Course Name</h1>
-                    </div>
-                    <div className="px-4  pt-4  bg-white ">
-                        <h1 className="text-[16px] font-normal">Total Credit Hour :</h1>
-                        <br />
-                        <hr/>
-                    </div>
-                    <div className="p-4  bg-white ">
-                        <h1 className="text-[16px] font-normal">Total Price : </h1>
-                    </div>
+                    <Cart
+                    selectCourse={selectCourse}
+                    
+                    >
+
+                    </Cart>
                 </div>
             </div>
 
