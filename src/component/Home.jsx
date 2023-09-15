@@ -46,7 +46,7 @@ const Home = () => {
                     </div>
                     <div className="p-4 border-b-2  bg-white ">
                         <h1 className="text-[18px] text-black
-                         font-bold ">Course</h1>
+                         font-bold ">Course Name</h1>
                     </div>
                     <div className="px-4  pt-4  bg-white ">
                         <h1 className="text-[16px] font-normal">Total Credit Hour :</h1>
