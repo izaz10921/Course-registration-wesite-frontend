@@ -4,18 +4,57 @@ import Cart from "./Cart";
 
 
 const Home = () => {
-    const [courseCardData,setCourseCardData]=useState([]);
-    const [selectCourse,setSelectCourse]=useState([]);
+    const [courseCardData, setCourseCardData] = useState([]);
+    const [selectCourse, setSelectCourse] = useState([]);
+    const [totalCredit, setTotalCredit] = useState(0);
+    const [remainingCreditHour, setRemainingCredit] = useState(20);
 
-    useEffect(()=> {
+    useEffect(() => {
         fetch("../../public/data.json")
-        .then((res)=> res.json())
-        .then((data)=> setCourseCardData(data) );
-    },[]);
-
+            .then((res) => res.json())
+            .then((data) => setCourseCardData(data));
+    }, []);
+    
     const handleSelectCourse = (courseData) => {
 
-        setSelectCourse([...selectCourse,courseData]);
+        const isAlreadyAdded = selectCourse.find((item) => item.id == courseData.id);
+
+        let credit = courseData.course_credit_hour;
+       
+        let remainingCreditHour=20;
+
+        if (isAlreadyAdded) {
+            return alert("already added")
+        }
+
+        else {
+            selectCourse.forEach((item) => {
+                
+                credit = credit + item.course_credit_hour;
+                
+            });
+            remainingCreditHour =  20-credit ;
+
+           
+
+            
+
+
+
+            if (credit > 20) {
+                return alert("credit limit up")
+
+            } else {
+                setTotalCredit(credit);
+                setRemainingCredit(remainingCreditHour);
+
+                setSelectCourse([...selectCourse, courseData]);
+            }
+
+
+        }
+
+
 
 
 
@@ -25,10 +64,10 @@ const Home = () => {
 
         <div className="mx-[60px] ">
             <h2 className="text-[32px] font-bold text-center pt-[50px]">Course Registration</h2>
-            <div className="flex gap-6 mt-10 pb-20  "> 
+            <div className="flex gap-6 mt-10 pb-20  ">
                 <div className="grid grid-cols-3 gap-10     w-3/4" >
-                    
-                    {courseCardData.map((courseData)=>(
+
+                    {courseCardData.map((courseData) => (
                         <div className="  bg-white rounded-[12px] shadow-lg   " key={courseData.id}>
                             <div>
                                 <img className="w-[280px] h-[144px] m-4" src={courseData.course_img} alt="" />
@@ -37,11 +76,11 @@ const Home = () => {
                             <p className="text-[14px] mx-4 font-normal text-gray-400       ">{courseData.course_description}</p>
                             <div className="flex  justify-between mx-4 mt-4 mb-4">
                                 <div>Price:{courseData.course_price}</div>
-                                <div>Credit Hour:{courseData.course_credit_hour}</div>
+                                <div>Credit Hour:{courseData.course_credit_hour}hr</div>
                             </div>
 
                             <button onClick={() => handleSelectCourse(courseData)} className="bg-blue-500 text-white text-[18px] font-normal px-[112px] m-4 mx-4 py-[9px] rounded-md  ">Select</button>
-        
+
 
 
 
@@ -52,8 +91,11 @@ const Home = () => {
                 </div>
                 <div className="w-1/4  px-5">
                     <Cart
-                    selectCourse={selectCourse}
-                    
+
+                        remainingCreditHour={remainingCreditHour}
+                        totalCredit={totalCredit}
+                        selectCourse={selectCourse}
+
                     >
 
                     </Cart>
